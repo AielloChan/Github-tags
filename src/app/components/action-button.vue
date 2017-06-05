@@ -26,11 +26,13 @@ export default {
   props: ['count', 'saving', 'fetching', 'currentRepo', 'actionButtonClick'],
   data: function () {
     return {
-      title: 'Set your own tag(s) on ' + this.currentRepo,
-      count_aria_label: this.count + " tag" + (this.count > 1 ? 's' : '') + " on this repository",
+      count_aria_label: this.count + " tag" + (this.count > 1 ? 's' : '') + " on this repository"
     }
   },
   computed: {
+    title: function () {
+      return 'Set your own tag(s) on ' + this.currentRepo;
+    },
     label: function () {
       if (this.saving) {
         return "Saving";

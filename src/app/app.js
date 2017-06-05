@@ -123,7 +123,7 @@ Avoid new Vue looks too mess
 var Bag = {
     data: {
         env: {
-            currentRepo: 'AielloChan/stars'
+            currentRepo: ''
         },
         state: {
             saving: false,
