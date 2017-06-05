@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "Github Tags",
+    "version": "0.4",
+    "default_locale": "en",
+    "description": "This extension save you from github star mess.",
+    "permissions": [
+        "https://api.github.com/",
+        "contextMenus",
+        "tabs",
+        "storage"
+    ],
+    "background": {
+        "scripts": [
+            "vendor/base64/base64.min.js",
+            "vendor/axios/axios.min.js",
+            "app/background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [{
+        "matches": ["https://github.com/*/*"],
+        "js": ["app/app.js"],
+        "run_at": "document_start"
+    }],
+    "browser_action": {
+        "default_icon": "assets/img/icon.png",
+        "default_title": "Github Stars"
+    },
+    "options_page": "options/index.html"
+}
