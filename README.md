@@ -2,7 +2,7 @@
 
 > A chrome extension can save you from github star mess.
 
-**Worning:** This proj is initial developing.
+**Warning:** This proj is initial developing.
 
 ## Build Setup
 
