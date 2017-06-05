@@ -56,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Custom template',
+      title: 'Github Tags',
       template: 'src/options/index.html',
       filename: "options/index.html",
       inject: false
