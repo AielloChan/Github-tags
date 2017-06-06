@@ -5,7 +5,7 @@ Handle all data process & net work
 import {
     fetchData,
     saveData
-} from './msgHandler.js';
+} from './handler.js';
 
 
 // First install show options page

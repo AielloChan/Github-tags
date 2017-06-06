@@ -1,3 +1,8 @@
+/*=========================================================
+Msg handler script
+Handle all msg request
+==========================================================*/
+
 export function fetchData(options, cb) {
     chrome.storage.local.get(['repo_addr'], function (store) {
         var url = 'https://api.github.com/repos/' + store.repo_addr + '/contents/data.json';
