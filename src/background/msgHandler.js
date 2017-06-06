@@ -62,7 +62,7 @@ export function fetchData(options, cb) {
 }
 
 export function saveData(options, cb) {
-    chrome.storage.local.get(['repo_addr'], function (store) {
+    chrome.storage.local.get(['repo_addr', 'token'], function (store) {
         var url = 'https://api.github.com/repos/' + store.repo_addr + '/contents/data.json';
         axios({
             url: url,
@@ -105,7 +105,6 @@ export function saveData(options, cb) {
             var new_index = indexs[indexs.length - 1] + 1
             data.global_tag_index = data.global_tag_index > new_index ?
                 data.global_tag_index : new_index;
-
 
             // upload
             axios({
