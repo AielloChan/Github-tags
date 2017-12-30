@@ -85,19 +85,24 @@ export function saveData(options, cb) {
                 if (!data.tags[tag.id]) {
                     data.tags[tag.id] = tag.name;
                 }
-                return tag.id;
+                return parseInt(tag.id);
             }).sort(function (a, b) {
                 return a > b
             })
 
             if (indexs.length < 1) {
+                // 当前实例 Tag 为空
+                // 如果实例条目存在，则说明当前是取消 Tag 操作
+                // 如果实例不存在，说明当前并未对该实例做任何 Tag 操作
                 if (data.repos[options.currentRepo])
+                    // 若当前实例条目存在则删除
                     delete data.repos[options.currentRepo];
 
             } else if (!data.repos[options.currentRepo]) {
+                // 如果当前实例不存在，则创建，并指定其 Tag 序号
                 data.repos[options.currentRepo] = indexs;
             } else if (data.repos[options.currentRepo].toString() == indexs.toString()) {
-
+                // 当前实例的 Tag 并未改变
                 cb({
                     code: 200
                 });
@@ -107,7 +112,7 @@ export function saveData(options, cb) {
                 data.repos[options.currentRepo] = indexs;
             }
 
-            var new_index = indexs[indexs.length - 1] + 1
+            var new_index = parseInt(indexs[indexs.length - 1]) + 1;
             data.global_tag_index = data.global_tag_index > new_index ?
                 data.global_tag_index : new_index;
 
