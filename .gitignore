@@ -1,6 +1,16 @@
+# mac os file
 .DS_Store
+
+# node.js file
 node_modules/
-dist/
-temp/
 npm-debug.log
 yarn-error.log
+
+# dist file
+dist/
+
+temp/
+
+# Chrome pack file
+dist.crx
+dist.pem
