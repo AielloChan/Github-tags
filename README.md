@@ -19,6 +19,14 @@ npm run build
 
 Then the dist folder is your extension.
 
+## How to use
+1. You should create a new git-repository which are used for store your tags data(e.g. tags);
+2. Generate a new [tocken](https://github.com/settings/tokens) with **Repo** checked;(therefor Ext can update your tag data);
+3. Build Extensions (with Build Setup);
+4. Open [Extensions](chrome://extensions/) in your google chrome, and checked **Developer mode**, then click **Load unpacked extension..** button and choose **disk** folder, now **Github-tags** loaded;
+5. One web page will be opened automaticly, fill in your repository address(e.g. AielloChan/tags), token and click **Save**;
+6. Here we go!! Every github repository page will be added a button named **Tags**, try it out!
+
 
 # TODO Features
 
