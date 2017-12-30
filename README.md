@@ -22,7 +22,7 @@ Then the dist folder is your extension.
 ## How to use
 1. You should create a new git-repository which are used for store your tags data(e.g. tags), add a new file named **data.json** with content below:
     ```json
-    {"version":"1.0","global_tag_index":0,"repos":{},"tags":{}}
+    {"version":"1.0","global_tag_index":0,"tags":{},"repos":{}}
     ```
 2. Generate a new [tocken](https://github.com/settings/tokens) with **Repo** checked;(therefor Ext can update your tag data);
 3. Build Extensions (with Build Setup);
