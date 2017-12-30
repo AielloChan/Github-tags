@@ -22,36 +22,33 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {}
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules|vendor/
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
-      },
-      {
-        test: /\.less$/,
-        use: extractLess.extract({
-          use: [{
-            loader: "css-loader"
-          }, {
-            loader: "less-loader"
-          }],
-          // use style-loader in development 
-          fallback: "style-loader"
-        })
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        loaders: {}
       }
+    },
+    {
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules|vendor/
+    },
+    {
+      test: /\.(png|jpg)$/,
+      loader: 'url-loader?limit=8192'
+    },
+    {
+      test: /\.less$/,
+      use: extractLess.extract({
+        use: [{
+          loader: "css-loader"
+        }, {
+          loader: "less-loader"
+        }],
+        // use style-loader in development 
+        fallback: "style-loader"
+      })
+    }
     ]
   },
   plugins: [
@@ -64,14 +61,14 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'src/manifest.json'
     }, {
-        from: 'src/_locales',
-        to: "_locales"
-      }, {
+      from: 'src/_locales',
+      to: "_locales"
+    }, {
       from: 'src/assets',
       to: "assets"
-      }, {
-        from: 'src/vendor',
-        to: "vendor"
+    }, {
+      from: 'src/vendor',
+      to: "vendor"
     }]),
     extractLess
   ],
