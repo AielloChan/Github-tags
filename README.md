@@ -5,6 +5,8 @@
 
 **Warning:** This proj is initial developing.
 
+[中文说明](https://github.com/AielloChan/Github-tags/blob/master/README-CN.md)
+
 ## Build Setup
 
 ``` bash
