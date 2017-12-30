@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <div class="row title">
-            <img class="logo" src="../assets/img/icon.png" alt="Github-tags">
+            <a href="https://github.com/AielloChan/Github-tags">
+                <img class="logo" src="../assets/img/icon.png" alt="Github-tags">
+            </a>
             <h1>Github-tags</h1>
         </div>
         
