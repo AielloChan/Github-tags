@@ -2,7 +2,7 @@
   <form>
     <div class="form-group">
       <label for="repo_addr">Repository Address</label>
-      <input type="text" class="form-control" id="repo_addr" placeholder="Enter your repository address..." v-model.trim="repo_addr">
+      <input type="text" class="form-control" id="repo_addr" placeholder="e.g. AielloChan/tags" v-model.trim="repo_addr">
     </div>
     <div class="form-group">
       <label for="github_token">Github Token</label>
