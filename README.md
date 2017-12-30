@@ -1,3 +1,4 @@
+![Github-tags](https://raw.githubusercontent.com/AielloChan/Github-tags/master/src/assets/img/icon.png)
 # Github-tags
 
 > A chrome extension can save you from github star mess.
