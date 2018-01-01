@@ -1,7 +1,10 @@
-![Github-tags](https://raw.githubusercontent.com/AielloChan/Github-tags/master/src/assets/img/icon.png)
+![Github-tags](https://raw.githubusercontent.com/AielloChan/Github-tags/master/README/banner.png)
+
 # Github-tags
 
 > A chrome extension can save you from github star mess.
+
+![Github-tags preview](https://raw.githubusercontent.com/AielloChan/Github-tags/master/README/preview.gif)
 
 **Warning:** This proj is initial developing.
 

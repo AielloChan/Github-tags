@@ -1,7 +1,10 @@
-![Github-tags](https://raw.githubusercontent.com/AielloChan/Github-tags/master/src/assets/img/icon.png)
+![Github-tags](https://raw.githubusercontent.com/AielloChan/Github-tags/master/README/banner.png)
+
 # Github-tags
 
 > 一个让你能够给 Github 项目贴标签的 Chrome 插件。
+
+![Github-tags 预览](https://raw.githubusercontent.com/AielloChan/Github-tags/master/README/preview.gif)
 
 **提醒：** 此项目还处于初级开发阶段，各项功能并不是特别完善，但有向后兼容措施！
 
