@@ -26,10 +26,7 @@ npm run build
 Then the dist folder is your chrome browser extension.
 
 ## How to use
-1. You should [create a new git-repository](https://github.com/new) (e.g. tags) which are used for store your tags data, add a new file named **data.json** with content below:
-    ```json
-    {"version":"1.0","global_tag_index":0,"tags":{},"repos":{}}
-    ```
+1. You should [fork a repository](https://github.com/AielloChan/Tags) to be your data repository;
 2. Generate a new [token](https://github.com/settings/tokens) with **Repo** checked;(therefor Ext can update your tag data);
 3. Build Extensions (with Build Setup);
 4. Open [Extensions](chrome://extensions/) in your google chrome, and checked **Developer mode**, then click **Load unpacked extension..** button and choose **dist** folder, now **Github-tags** loaded;

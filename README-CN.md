@@ -24,10 +24,7 @@ npm run build
 构建完成后，**dist** 目录则为生成的 Chrome 浏览器插件。
 
 ## 如何使用
-1. 你需要在 Github 上[创建一个新项目](https://github.com/new) （比如：tags），并在项目中创建一个名为 **data.json** 的文件，内容如下:
-    ```json
-    {"version":"1.0","global_tag_index":0,"tags":{},"repos":{}}
-    ```
+1. 你需要 [Fork 一个 Github 仓库](https://github.com/AielloChan/Tags)，将其作为你的数据仓库；
 2. 创建一个新的授权 [token](https://github.com/settings/tokens)，保持 **Repo** 权限为选中状态，这样插件才能保存数据到你的 **data.json** 文件中；
 3. 按照上文中的 **构建项目** 的说明构建插件;
 4. 打开 Chrome 浏览器的[插件管理](chrome://extensions/)页面，勾选 **开发者模式**，点击 **加载未压缩插件** 按钮并选择 **dist** 文件夹，到此 **Github-tags** 加载完成；
