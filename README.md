@@ -6,7 +6,7 @@
 
 ![Github-tags preview](https://raw.githubusercontent.com/AielloChan/Github-tags/master/README/preview.gif)
 
-**Warning:** This proj is initial developing.
+**Warning:** In reconstruction.
 
 [中文说明](https://github.com/AielloChan/Github-tags/blob/master/README-CN.md)
 

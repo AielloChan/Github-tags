@@ -6,7 +6,7 @@
 
 ![Github-tags 预览](https://raw.githubusercontent.com/AielloChan/Github-tags/master/README/preview.gif)
 
-**提醒：** 此项目还处于初级开发阶段，各项功能并不是特别完善，但有向后兼容措施！
+**提醒：** 此项目还处于初级开发阶段，正在重构中！
 
 ## 简单使用
 
