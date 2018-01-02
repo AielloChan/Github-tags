@@ -1,14 +1,5 @@
-/*=========================================================
-Github-tags App
-==========================================================*/
-
-
-import {
-    Injector,
-    AddModalHook
-} from './injector.js';
-import Config from './config.js';
 import Vue from 'vue';
+import Config from './config.js';
 import SendMsg from './sendMsg.js';
 import ActionButton from './components/action-button.vue';
 import MenuModal from './components/menu-modal.vue';
@@ -17,35 +8,22 @@ var AppDomNode = null,
     App = null;
 
 
-/*=========================================================
-Base inject dom node
-==========================================================*/
+// Inject vue app root node
+function injectAppRootNode(selStr, nodeStr) {
+    var bar = document.querySelector(selStr);
+    bar.innerHTML = nodeStr + bar.innerHTML;
+}
 
-// Injection
-Injector(
-    Config.INJECT_POINT_SELECTOR,
-    Config.BASE_INJECT_NODE,
-    function () {
-
-        // Init app
-        App = StartApp();
-
-        // feedback
-        App.$on('close_modal', App.closeModal);
-
-        // Inject mask hook
-        AddModalHook(Config.MODAL_HOOK_SELECTOR, function () {
-            App.$emit('close_modal');
-        })
-
-    }
-);
-
+// listing mask click
+function addModalClickHook(selStr, callback) {
+    var mask = document.querySelector(selStr);
+    mask.onclick = callback;
+}
 
 // When all prepared, run it :)
-function StartApp() {
+function startApp(mountPoint) {
     return new Vue({
-        el: '#github-tags-anchor',
+        el: mountPoint,
         data: Bag.data,
         methods: Bag.methods,
         components: {
@@ -56,7 +34,6 @@ function StartApp() {
         render: render
     });
 }
-
 
 // appMounted callback
 function mounted() {
@@ -116,10 +93,8 @@ function render(createElement) {
 }
 
 
-/*=========================================================
-Data bag
-Avoid new Vue looks too mess
-==========================================================*/
+// Data bag
+// Avoid new Vue looks too mess
 var Bag = {
     data: {
         env: {
@@ -139,7 +114,7 @@ var Bag = {
     methods: {
         useTag: function (tag_id) {
             for (var i = 0,
-                    len = this.data.unused_tags.length; i < len; i++) {
+                len = this.data.unused_tags.length; i < len; i++) {
                 if (this.data.unused_tags[i].id == tag_id) {
                     var tag = this.data.unused_tags[i];
                     this.data.unused_tags.splice(i, 1);
@@ -150,7 +125,7 @@ var Bag = {
         },
         unuseTag: function (tag_id) {
             for (var i = 0,
-                    len = this.data.used_tags.length; i < len; i++) {
+                len = this.data.used_tags.length; i < len; i++) {
                 if (this.data.used_tags[i].id == tag_id) {
                     var tag = this.data.used_tags[i];
                     this.data.used_tags.splice(i, 1);
@@ -162,7 +137,7 @@ var Bag = {
         addTag: function (tag_name) {
             var tag_name_lower = tag_name.toLowerCase();
             for (var i = 0,
-                    len = this.data.used_tags.length; i < len; i++) {
+                len = this.data.used_tags.length; i < len; i++) {
                 if (this.data.used_tags[i].name.toLowerCase() ==
                     tag_name_lower) {
                     this.hightLightTag(this.data.used_tags[i].id);
@@ -170,7 +145,7 @@ var Bag = {
                 }
             }
             for (var i = 0,
-                    len = this.data.unused_tags.length; i < len; i++) {
+                len = this.data.unused_tags.length; i < len; i++) {
                 if (this.data.unused_tags[i].name.toLowerCase() ==
                     tag_name_lower) {
                     this.useTag(this.data.unused_tags[i].id);
@@ -245,3 +220,18 @@ var Bag = {
         }
     }
 }
+
+// Inject app root node for vue
+injectAppRootNode(Config.INJECT_POINT_SELECTOR, Config.BASE_INJECT_NODE)
+
+// Init app
+App = startApp(Config.VUE_MOUNT_POINT);
+
+// Inject mask hook
+App.$on('close_modal', App.closeModal);
+addModalClickHook(
+    Config.MODAL_HOOK_SELECTOR,
+    function () {
+        App.$emit('close_modal');
+    }
+)
