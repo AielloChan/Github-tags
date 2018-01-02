@@ -89,7 +89,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 if (process.env.NODE_ENV === "production") {
-  webpackConfig.devtool = '#cheap-module-eval-source-map'
+  webpackConfig.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   webpackConfig.plugins = (webpackConfig.plugins || []).concat([
     new webpack.DefinePlugin({
