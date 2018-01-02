@@ -1,11 +1,17 @@
 <template>
   <form>
     <div class="form-group">
-      <label for="repo_addr">Repository Address</label>
+      <label for="repo_addr">
+        Repository Address 
+        <a href="#help"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a>
+      </label>
       <input type="text" class="form-control" id="repo_addr" placeholder="e.g. AielloChan/tags" v-model.trim="repo_addr">
     </div>
     <div class="form-group">
-      <label for="github_token">Github Token</label>
+      <label for="github_token">
+        Github Token
+        <a href="#help"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a>
+      </label>
       <input type="text" class="form-control" id="github_token" placeholder="Your github token..." v-model.trim="token">
     </div>
     <div class="alert" :class="msg_class" role="alert" v-show="is_show_msg">
@@ -17,53 +23,60 @@
 
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {
       repo_addr: "",
       token: "",
       is_show_msg: false,
       msg_class: "",
       msg: ""
-    }
+    };
   },
-  mounted: function () {
+  mounted: function() {
     this.resume();
   },
   methods: {
-    show_msg: function (msg, msg_class) {
+    show_msg: function(msg, msg_class) {
       this.msg = msg || "";
       this.msg_class = msg_class || "alert-success";
       this.is_show_msg = true;
-      setTimeout(function () {
-        if (this.is_show_msg) {
-          this.is_show_msg = false;
-        }
-      }.bind(this), 3000);
+      setTimeout(
+        function() {
+          if (this.is_show_msg) {
+            this.is_show_msg = false;
+          }
+        }.bind(this),
+        3000
+      );
     },
-    save: function () {
+    save: function() {
       if (this.repo_addr !== "" && this.token !== "") {
-        chrome.storage.local.set({
-          "repo_addr": this.repo_addr,
-          "token": this.token
-        }, function () {
-          this.show_msg("Save successed!");
-        }.bind(this));
+        chrome.storage.local.set(
+          {
+            repo_addr: this.repo_addr,
+            token: this.token
+          },
+          function() {
+            this.show_msg("Save successed!");
+          }.bind(this)
+        );
       } else {
         this.show_msg("Repo Addr or Token can't be empty!", "alert-danger");
       }
     },
-    resume: function () {
-      chrome.storage.local.get([
-        "repo_addr",
-        "token"], function (data) {
+    resume: function() {
+      chrome.storage.local.get(
+        ["repo_addr", "token"],
+        function(data) {
           if (data) {
             this.repo_addr = data.repo_addr;
             this.token = data.token;
           }
-        }.bind(this));
+        }.bind(this)
+      );
     }
   }
-}
+};
 </script>
 
 <style>

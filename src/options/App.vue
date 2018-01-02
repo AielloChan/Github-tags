@@ -12,11 +12,18 @@
                 <Content></Content>
             </div>
         </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+                <Help></Help>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import Content from "./Content.vue";
+import Help from "./help.vue";
 
 export default {
   name: "app",
@@ -24,7 +31,8 @@ export default {
     return {};
   },
   components: {
-    Content
+    Content,
+    Help
   }
 };
 </script>
