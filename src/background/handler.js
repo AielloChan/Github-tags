@@ -16,8 +16,8 @@ export function fetchData(options, cb) {
         }).then(function (response) {
 
             if (response.status == 200) {
-                var used_tags = [],
-                    unused_tags = [];
+                var usedTags = [],
+                    unusedTags = [];
 
 
                 var data = JSON.parse(
@@ -28,7 +28,7 @@ export function fetchData(options, cb) {
                 // get used tags
                 if (tagIndexs && tagIndexs.length > 0) {
                     tagIndexs.forEach(function (index) {
-                        used_tags.push({
+                        usedTags.push({
                             id: 1 * index,
                             name: data.tags[index]
                         })
@@ -38,7 +38,7 @@ export function fetchData(options, cb) {
 
                 // process unused tags
                 for (var index in data.tags) {
-                    unused_tags.push({
+                    unusedTags.push({
                         id: index,
                         name: data.tags[index]
                     });
@@ -48,9 +48,9 @@ export function fetchData(options, cb) {
                 cb({
                     code: response.status,
                     data: {
-                        tags_count: data.global_tag_index,
-                        used_tags: used_tags,
-                        unused_tags: unused_tags
+                        tagsCount: data.global_tag_index,
+                        usedTags: usedTags,
+                        unusedTags: unusedTags
                     }
                 });
 
@@ -81,7 +81,7 @@ export function saveData(options, cb) {
                 Base64.decode(response.data.content.replace(/\n/g, ''))
             );
 
-            var indexs = options.content.used_tags.map(function (tag) {
+            var indexs = options.content.usedTags.map(function (tag) {
                 if (!data.tags[tag.id]) {
                     data.tags[tag.id] = tag.name;
                 }

@@ -60,8 +60,7 @@ function mounted() {
 function render(createElement) {
     return createElement(
         'li', {
-            class: "select-menu js-menu-container " +
-                "js-select-menu float-left",
+            class: "select-menu float-left",
             attrs: {
                 id: Config.APP_DOM_NODE_ID
             }
@@ -69,7 +68,7 @@ function render(createElement) {
             createElement(ActionButton, {
                 props: {
                     open: this.state.open,
-                    count: this.data.used_tags.length,
+                    count: this.data.usedTags.length,
                     saving: this.state.saving,
                     fetching: this.state.fetching,
                     currentRepo: this.env.currentRepo,
@@ -81,13 +80,13 @@ function render(createElement) {
                 props: {
                     showModal: this.state.open,
                     fetching: this.state.fetching,
-                    used_tags: this.data.used_tags,
-                    unused_tags: this.data.unused_tags,
+                    usedTags: this.data.usedTags,
+                    unusedTags: this.data.unusedTags,
                     useTag: this.useTag,
                     addTag: this.addTag,
                     unuseTag: this.unuseTag,
                     removeAll: this.removeAll,
-                    hight_light_tag: this.state.hight_light_tag
+                    hightLightTag: this.state.hightLightTag
                 }
             })
         ]
@@ -106,69 +105,69 @@ var Bag = {
             open: false,
             saving: false,
             fetching: false,
-            hight_light_tag: -1
+            hightLightTag: -1
         },
         data: {
-            tags_count: 0,
-            used_tags: [],
-            unused_tags: []
+            tagsCount: 0,
+            usedTags: [],
+            unusedTags: []
         }
     },
     methods: {
-        useTag: function (tag_id) {
+        useTag: function (tagId) {
             for (var i = 0,
-                len = this.data.unused_tags.length; i < len; i++) {
-                if (this.data.unused_tags[i].id == tag_id) {
-                    var tag = this.data.unused_tags[i];
-                    this.data.unused_tags.splice(i, 1);
-                    this.data.used_tags.push(tag);
+                len = this.data.unusedTags.length; i < len; i++) {
+                if (this.data.unusedTags[i].id == tagId) {
+                    var tag = this.data.unusedTags[i];
+                    this.data.unusedTags.splice(i, 1);
+                    this.data.usedTags.push(tag);
                     break;
                 }
             }
         },
-        unuseTag: function (tag_id) {
+        unuseTag: function (tagId) {
             for (var i = 0,
-                len = this.data.used_tags.length; i < len; i++) {
-                if (this.data.used_tags[i].id == tag_id) {
-                    var tag = this.data.used_tags[i];
-                    this.data.used_tags.splice(i, 1);
-                    this.data.unused_tags.unshift(tag);
+                len = this.data.usedTags.length; i < len; i++) {
+                if (this.data.usedTags[i].id == tagId) {
+                    var tag = this.data.usedTags[i];
+                    this.data.usedTags.splice(i, 1);
+                    this.data.unusedTags.unshift(tag);
                     break;
                 }
             }
         },
-        addTag: function (tag_name) {
-            var tag_name_lower = tag_name.toLowerCase();
+        addTag: function (tagName) {
+            var tagNameLower = tagName.toLowerCase();
             for (var i = 0,
-                len = this.data.used_tags.length; i < len; i++) {
-                if (this.data.used_tags[i].name.toLowerCase() ==
-                    tag_name_lower) {
-                    this.hightLightTag(this.data.used_tags[i].id);
+                len = this.data.usedTags.length; i < len; i++) {
+                if (this.data.usedTags[i].name.toLowerCase() ==
+                    tagNameLower) {
+                    this.hightLightTag(this.data.usedTags[i].id);
                     return;
                 }
             }
             for (var i = 0,
-                len = this.data.unused_tags.length; i < len; i++) {
-                if (this.data.unused_tags[i].name.toLowerCase() ==
-                    tag_name_lower) {
-                    this.useTag(this.data.unused_tags[i].id);
+                len = this.data.unusedTags.length; i < len; i++) {
+                if (this.data.unusedTags[i].name.toLowerCase() ==
+                    tagNameLower) {
+                    this.useTag(this.data.unusedTags[i].id);
                     return;
                 }
             }
-            this.data.used_tags.push({
-                id: this.data.tags_count++,
-                name: tag_name
+            this.data.usedTags.push({
+                id: this.data.tagsCount++,
+                name: tagName
             });
         },
         removeAll: function () {
-            this.data.unused_tags =
-                this.data.used_tags.concat(this.data.unused_tags)
-            this.data.used_tags = [];
+            this.data.unusedTags =
+                this.data.usedTags.concat(this.data.unusedTags)
+            this.data.usedTags = [];
         },
-        hightLightTag: function (tag_id) {
-            this.state.hight_light_tag = tag_id;
+        hightLightTag: function (tagId) {
+            this.state.hightLightTag = tagId;
             setTimeout(() => {
-                this.state.hight_light_tag = -1;
+                this.state.hightLightTag = -1;
             }, 2000);
         },
         closeModal: function () {
@@ -196,8 +195,8 @@ var Bag = {
             SendMsg('save', {
                 currentRepo: this.env.currentRepo,
                 content: {
-                    used_tags: this.data.used_tags,
-                    unused_tags: this.data.unused_tags
+                    usedTags: this.data.usedTags,
+                    unusedTags: this.data.unusedTags
                 }
             }, (response) => {
                 if (response.code == 200) {
@@ -214,9 +213,9 @@ var Bag = {
                 currentRepo: this.env.currentRepo
             }, (response) => {
                 if (response.code == 200) {
-                    this.data.used_tags = response.data.used_tags;
-                    this.data.unused_tags = response.data.unused_tags;
-                    this.data.tags_count = response.data.tags_count;
+                    this.data.usedTags = response.data.usedTags;
+                    this.data.unusedTags = response.data.unusedTags;
+                    this.data.tagsCount = response.data.tagsCount;
                     this.state.fetching = false;
                 } else {
                     console.error(response.error)

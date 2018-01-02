@@ -1,7 +1,8 @@
 <template>
   <div class="" aria-expanded="false" @click="actionButtonClick">
+    <mask-layer v-show="open"></mask-layer>
     <div accept-charset="UTF-8" class="btn-with-count">
-      <button type="button" :class="{'btn-primary':saving}" class="btn btn-sm btn-with-count" :title="title" :aria-label="title">
+      <button type="button" :class="{'btn-primary':saving,'selected':open}" class="btn btn-sm btn-with-count" :title="title" :aria-label="title">
         <svg v-show="!saving&&!fetching" class="github-tags_action-button_svg" version='1.1' viewBox="0 0 1088 1024" aria-hidden="true">
           <path d="M0 384l0-237.568q0-29.696 21.504-51.2t51.2-22.528l238.592 0q29.696 0 66.56 15.36t58.368 36.864l408.576 408.576q20.48 21.504 20.48 51.2 0 30.72-20.48 52.224l-280.576 280.576q-22.528 21.504-52.224 21.504-30.72 0-51.2-21.504l-408.576-408.576q-21.504-21.504-36.864-58.368t-15.36-66.56zM109.568 256q0 30.72 21.504 51.2t52.224 21.504 51.2-21.504 21.504-51.2-21.504-52.224-51.2-20.48-52.224 20.48-21.504 52.224zM402.432 72.704l128 0q29.696 0 66.56 15.36t58.368 36.864l408.576 408.576q21.504 21.504 21.504 51.2 0 30.72-21.504 52.224l-280.576 280.576q-22.528 21.504-52.224 21.504-20.48 0-33.792-8.192t-29.696-25.6l268.288-268.288q21.504-21.504 21.504-52.224 0-29.696-21.504-51.2l-408.576-408.576q-21.504-21.504-58.368-36.864t-66.56-15.36z"></path>
         </svg>
@@ -17,7 +18,6 @@
     <a class="social-count" :aria-label="count_aria_label">
       {{count}}
     </a>
-    <mask-layer v-show="open"></mask-layer>
   </div>
 </template>
 

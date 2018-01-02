@@ -10,14 +10,14 @@
         <span class="select-menu-title">Add tags</span>
       </div>
   
-      <tags-container :label="'Used tags('+used_tags.length+'):'" :msg="'Try add/select some tag'">
-        <tag-used v-for="tag in used_tags" :class="{active:hight_light_tag==tag.id}" :key="tag.id" :tag_id="tag.id" :tag_name="tag.name" @remove-tag="unuseTag"></tag-used>
+      <tags-container :label="'Used tags('+usedTags.length+'):'" :msg="'Try add/select some tag'">
+        <tag-used v-for="tag in usedTags" :class="{active:hightLightTag==tag.id}" :key="tag.id" :tagId="tag.id" :tagName="tag.name" @remove-tag="unuseTag"></tag-used>
       </tags-container>
   
       <add-tag @add-new-tag="addTag"></add-tag>
   
-      <tags-container :label="'Common tags('+unused_tags.length+'):'" :msg="'Try add a new tag'">
-        <tag-unused v-for="tag in unused_tags" :key="tag.id" :tag_id="tag.id" :tag_name="tag.name" @remove-tag="useTag"></tag-unused>
+      <tags-container :label="'Common tags('+unusedTags.length+'):'" :msg="'Try add a new tag'">
+        <tag-unused v-for="tag in unusedTags" :key="tag.id" :tagId="tag.id" :tagName="tag.name" @remove-tag="useTag"></tag-unused>
       </tags-container>
   
       <remove-all @remove-all-tags="removeAll"></remove-all>
@@ -54,13 +54,13 @@ export default {
   props: [
     "showModal",
     "fetching",
-    "used_tags",
-    "unused_tags",
+    "usedTags",
+    "unusedTags",
     "useTag",
     "addTag",
     "unuseTag",
     "removeAll",
-    "hight_light_tag"
+    "hightLightTag"
   ],
   components: {
     TagsContainer,

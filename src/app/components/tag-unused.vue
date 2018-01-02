@@ -1,16 +1,16 @@
 <template>
-    <span class="github-tags_tag-unused" title="Add this tag" @click.stop="removeTag(tag_id)">
-        {{tag_name}}
+    <span class="github-tags_tag-unused" title="Add this tag" @click.stop="removeTag(tagId)">
+        {{tagName}}
     </span>
 </template>
 
 <script>
 export default {
     name: 'tag-unused',
-    props: ['tag_id', 'tag_name'],
+    props: ['tagId', 'tagName'],
     methods: {
-        removeTag: function (tag_id) {
-            this.$emit('remove-tag', tag_id)
+        removeTag: function (tagId) {
+            this.$emit('remove-tag', tagId)
         }
     }
 }
