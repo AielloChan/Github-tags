@@ -10,6 +10,12 @@
 
 [中文说明](https://github.com/AielloChan/Github-tags/blob/master/README-CN.md)
 
+## Quick use
+
+1. Make sure you have installed a Google Chrome browser;
+2. Download zip in [Latest release](https://github.com/AielloChan/Github-tags/releases), and unzip it, then double click the **Github-tags_xx.xx.crx** file to install it.
+3. When you install it successed, this extension will open a option page automatically, follow the help to config it.
+
 ## Build Setup
 
 ``` bash
@@ -25,7 +31,7 @@ npm run build
 
 Then the dist folder is your chrome browser extension.
 
-## How to use
+## How to use the build file
 1. You should [fork a repository](https://github.com/AielloChan/Tags) to be your data repository;
 2. Generate a new [token](https://github.com/settings/tokens) with **Repo** checked;(therefor Ext can update your tag data);
 3. Build Extensions (with Build Setup);

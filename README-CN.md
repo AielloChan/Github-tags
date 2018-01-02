@@ -8,6 +8,12 @@
 
 **提醒：** 此项目还处于初级开发阶段，各项功能并不是特别完善，但有向后兼容措施！
 
+## 简单使用
+
+1. 首先你需要安装有一个 Google Chrome 浏览器；
+2. 下载[最新发布的版本](https://github.com/AielloChan/Github-tags/releases)中的 zip 文档，解压后双击安装 crx 插件；
+3. 安装完成后，插件会自动打开一个配置页面，按照说明操作即可。
+
 ## 构建项目
 
 ``` bash
@@ -23,7 +29,7 @@ npm run build
 
 构建完成后，**dist** 目录则为生成的 Chrome 浏览器插件。
 
-## 如何使用
+## 如何使用构建出来的文件
 1. 你需要 [Fork 一个 Github 仓库](https://github.com/AielloChan/Tags)，将其作为你的数据仓库；
 2. 创建一个新的授权 [token](https://github.com/settings/tokens)，保持 **Repo** 权限为选中状态，这样插件才能保存数据到你的 **data.json** 文件中；
 3. 按照上文中的 **构建项目** 的说明构建插件;
