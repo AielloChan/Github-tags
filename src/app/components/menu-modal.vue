@@ -1,5 +1,5 @@
 <template>
-  <div class="select-menu-modal-holder js-menu-content js-navigation-container github-tags_menu-modal" aria-expanded="false">
+  <div class="github-tags_menu-modal" aria-expanded="false" v-show="showModal">
     <div class="select-menu-modal" v-show="!fetching">
       <div class="select-menu-header">
         <!--<div class='octicon octicon-x' title="Reset modification">
@@ -43,15 +43,25 @@
 </template>
 
 <script>
-import TagsContainer from './tags-container.vue';
-import AddTag from './add-tag.vue';
-import RemoveAll from './remove-all.vue';
-import TagUsed from './tag-used.vue';
-import TagUnused from './tag-unused.vue';
+import TagsContainer from "./tags-container.vue";
+import AddTag from "./add-tag.vue";
+import RemoveAll from "./remove-all.vue";
+import TagUsed from "./tag-used.vue";
+import TagUnused from "./tag-unused.vue";
 
 export default {
-  name: 'menu-modal',
-  props: ['fetching', 'used_tags', 'unused_tags', 'useTag', 'addTag', 'unuseTag', 'removeAll', 'hight_light_tag'],
+  name: "menu-modal",
+  props: [
+    "showModal",
+    "fetching",
+    "used_tags",
+    "unused_tags",
+    "useTag",
+    "addTag",
+    "unuseTag",
+    "removeAll",
+    "hight_light_tag"
+  ],
   components: {
     TagsContainer,
     TagUsed,
@@ -59,7 +69,7 @@ export default {
     TagUnused,
     RemoveAll
   }
-}
+};
 </script>
 
 <style>
@@ -69,7 +79,9 @@ export default {
 }*/
 
 .github-tags_menu-modal {
-  right: -202px;
+  position: absolute;
+  z-index: 30;
+  top: 100%;
 }
 
 .github-tags_menu-modal_fetch {

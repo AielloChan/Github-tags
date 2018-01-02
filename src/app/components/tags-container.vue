@@ -1,7 +1,7 @@
 <template>
-    <div class class="github-tags_tags-container_wrapper" v-show="is_show">
+    <div class="github-tags_tags-container_wrapper" v-show="is_show">
         <span class="github-tags_tags-container_label">{{label||default_label}}</span>
-        <div class class="github-tags_tags-container">
+        <div class="github-tags_tags-container">
             <slot>
                 <div class="github-tags_tags-container_try"> {{msg||default_msg}} </div>
             </slot>

@@ -1,5 +1,5 @@
 <template>
-  <div class="js-menu-target" aria-expanded="false" @click="actionButtonClick">
+  <div class="" aria-expanded="false" @click="actionButtonClick">
     <div accept-charset="UTF-8" class="btn-with-count">
       <button type="button" :class="{'btn-primary':saving}" class="btn btn-sm btn-with-count" :title="title" :aria-label="title">
         <svg v-show="!saving&&!fetching" class="github-tags_action-button_svg" version='1.1' viewBox="0 0 1088 1024" aria-hidden="true">
@@ -17,23 +17,37 @@
     <a class="social-count" :aria-label="count_aria_label">
       {{count}}
     </a>
+    <mask-layer v-show="open"></mask-layer>
   </div>
 </template>
 
 <script>
+import MaskLayer from "./mask-layer.vue";
+
 export default {
-  name: 'action-button',
-  props: ['count', 'saving', 'fetching', 'currentRepo', 'actionButtonClick'],
-  data: function () {
+  name: "action-button",
+  props: [
+    "open",
+    "count",
+    "saving",
+    "fetching",
+    "currentRepo",
+    "actionButtonClick"
+  ],
+  data: function() {
     return {
-      count_aria_label: this.count + " tag" + (this.count > 1 ? 's' : '') + " on this repository"
-    }
+      count_aria_label:
+        this.count +
+        " tag" +
+        (this.count > 1 ? "s" : "") +
+        " on this repository"
+    };
   },
   computed: {
-    title: function () {
-      return 'Set your own tag(s) on ' + this.currentRepo;
+    title: function() {
+      return "Set your own tag(s) on " + this.currentRepo;
     },
-    label: function () {
+    label: function() {
       if (this.saving) {
         return "Saving";
       } else if (this.fetching) {
@@ -42,8 +56,11 @@ export default {
         return "Tags";
       }
     }
+  },
+  components: {
+    MaskLayer
   }
-}
+};
 </script>
 
 <style>
@@ -80,5 +97,9 @@ export default {
   to {
     transform: rotate(-180deg);
   }
+}
+
+.social-count {
+  user-select: none;
 }
 </style>

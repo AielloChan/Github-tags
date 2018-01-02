@@ -68,6 +68,7 @@ function render(createElement) {
         }, [
             createElement(ActionButton, {
                 props: {
+                    open: this.state.open,
                     count: this.data.used_tags.length,
                     saving: this.state.saving,
                     fetching: this.state.fetching,
@@ -78,6 +79,7 @@ function render(createElement) {
 
             createElement(MenuModal, {
                 props: {
+                    showModal: this.state.open,
                     fetching: this.state.fetching,
                     used_tags: this.data.used_tags,
                     unused_tags: this.data.unused_tags,
@@ -101,6 +103,7 @@ var Bag = {
             currentRepo: ''
         },
         state: {
+            open: false,
             saving: false,
             fetching: false,
             hight_light_tag: -1
@@ -177,12 +180,14 @@ var Bag = {
             }
         },
         actionButtonClick: function () {
-            if (/active/.test(AppDomNode.className)) {
+            if (this.state.open) {
                 // Modal is closing
                 this.save();
+                this.state.open = false;
             } else {
                 // Openning Modal
                 this.fetch();
+                this.state.open = true;
             }
         },
         save: function () {
