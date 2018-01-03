@@ -6,9 +6,9 @@ var path = require('path'),
 
 var webpackConfig = {
   entry: {
-    './app/app': './src/app/app.js',
+    './app/app': './src/app/app.vue',
     './app/background': './src/background/background.js',
-    './options/options': './src/options/main.js'
+    './options/options': './src/options/main.vue'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
