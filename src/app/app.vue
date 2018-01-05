@@ -2,11 +2,10 @@
 import Vue from "vue";
 import Config from "./config.vue";
 import DataStore from "./dataStore.vue";
-import ActionButton from "./components/action-button.vue";
-import MenuModal from "./components/menu-modal.vue";
+import ActionButton from "./components/actionButton.vue";
+import MenuModal from "./components/menuModal.vue";
 
-var AppDomNode = null,
-  App = null;
+var App = null;
 
 // Inject vue app root node
 function injectAppRootNode(selStr, nodeStr) {
@@ -31,9 +30,6 @@ function startApp(mountPoint) {
 
 // appMounted callback
 function mounted() {
-  // get & store app node
-  AppDomNode = document.getElementById(Config.APP_DOM_NODE_ID);
-
   // get current repo path
   // e.g. AielloChan/blog
   this.env.currentRepo = (function() {
@@ -88,12 +84,12 @@ function render(createElement) {
   );
 }
 
+// avoid repeated injection
+if (!document.getElementById(Config.APP_DOM_NODE_ID)) {
+  // Inject app root node for vue
+  injectAppRootNode(Config.INJECT_POINT_SELECTOR, Config.BASE_INJECT_NODE);
 
-
-// Inject app root node for vue
-injectAppRootNode(Config.INJECT_POINT_SELECTOR, Config.BASE_INJECT_NODE);
-
-// Init app
-App = startApp(Config.VUE_MOUNT_POINT);
-
+  // Init app
+  App = startApp(Config.VUE_MOUNT_POINT);
+}
 </script>

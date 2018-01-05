@@ -1,10 +1,10 @@
 <template>
-  <div class="githubTags-mask"></div>
+  <div class="githubTags--mask"></div>
 </template>
 
 <script>
 export default {
-  name: 'mask-layer',
+  name: 'maskLayer',
   data: function() {
     return {};
   }
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style>
-.githubTags-mask {
+.githubTags--mask {
   position: fixed;
   top: 0;
   left: 0;

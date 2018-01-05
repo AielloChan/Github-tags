@@ -32,6 +32,10 @@ var webpackConfig = {
       {
         test: /\.(png|jpg)$/,
         loader: 'url-loader?limit=8192'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
       }
     ]
   },
@@ -59,7 +63,9 @@ var webpackConfig = {
   ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      'assets': path.resolve(__dirname, 'src/assets/'),
+      'components': path.resolve(__dirname, 'src/app/components')
     }
   },
   performance: {

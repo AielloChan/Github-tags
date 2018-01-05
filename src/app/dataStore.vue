@@ -72,12 +72,10 @@ export default {
     },
     actionButtonClick: function() {
       if (this.state.open) {
-        alert("a");
         // Modal is closing
         this.save();
         this.state.open = false;
       } else {
-        alert("b");
         // Openning Modal
         this.fetch();
         this.state.open = true;
